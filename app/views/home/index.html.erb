@@ -1,0 +1,16 @@
+<div id="user-widget">
+  <% if current_user %>
+    Welcome <strong><%= current_user.name %></strong>!<br />
+    <% if current_user.provider == "facebook" %>
+        <%= image_tag current_user.normalimage %><br />
+    <% else %>
+        <%= image_tag current_user.image %><br />
+    <% end %> 
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <h1 class="white" style="margin-top: 175px;">Welcome to my sample omniauth incorporation page. Below you will see the options to select signing with your Facebook, Instagram, and GitHub accounts.</h1>
+    <h1><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary btn-lg" %></h1><br />
+    
+    <h1><%= link_to "Sign in with Github", "/auth/github", class: "btn btn-default btn-lg" %></h1>
+  <% end %>
+</div>
